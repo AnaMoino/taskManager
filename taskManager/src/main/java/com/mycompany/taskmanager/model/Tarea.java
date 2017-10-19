@@ -7,6 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -14,19 +17,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Tarea implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id_tarea", updatable = false, nullable = false)
-	private Long idTarea;
-	@Version
-	@Column(name = "nombre")
-	private String nombre;
-        @Column(name = "descripcion")
-	private String descripcion;
-        @Column(name = "id_categoria")
-        private Long idCategoria;
-        
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_tarea", updatable = false, nullable = false)
+    private Long idTarea;
+    @Version
+    @Column(name = "nombre")
+    private String nombre;
+    @Column(name = "descripcion")
+    private String descripcion;
+ 
+    @JoinColumn(name = "id", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Categoria idCategoria;
 
     public Long getIdTarea() {
         return idTarea;
@@ -52,15 +56,13 @@ public class Tarea implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Long getIdCategoria() {
+    public Categoria getIdCategoria() {
         return idCategoria;
     }
 
-    public void setIdCategoria(Long idCategoria) {
+    public void setIdCategoria(Categoria idCategoria) {
         this.idCategoria = idCategoria;
     }
-
-    
     @Override
     public int hashCode() {
         int hash = 5;
@@ -85,8 +87,9 @@ public class Tarea implements Serializable {
         return true;
     }
 
-        
+    @Override
+    public String toString() {
+        return "Tarea{" + "idTarea=" + idTarea + ", nombre=" + nombre + ", descripcion=" + descripcion + '}';
+    }
     
-    
-	
 }

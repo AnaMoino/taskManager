@@ -1,4 +1,4 @@
-package com.mycompany.taskManager.rest;
+package com.mycompany.taskmanager.rest;
 
 import javax.ws.rs.core.Application;
 import javax.ws.rs.ApplicationPath;

@@ -1,0 +1,25 @@
+<div id="demo"  ng-controller="searchCategoriaController as categoria">
+    <!-- Button (Double) -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="ok"></label>
+        <div class="col-md-8">
+            <button id="ok" name="ok" class="btn btn-success" ng-click="categoria.search()">Buscar</button>
+             <a id="new" ui-sref="public.categorias.new" class="btn btn-primary">
+                Nueva
+            </a>
+        </div>
+    </div>
+    <hr />
+    <div>
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+            </tr>
+            <tr ng-repeat="a in categoria.categorias">
+                <td> <a ui-sref="public.categorias.edit({ id: a.id })">{{a.id}}</a></td>
+                <td>{{a.nombre}}</td>
+            </tr>
+        </table>
+    </div> 
+</div>

@@ -2,6 +2,7 @@ package com.mycompany.taskmanager.model;
 
 import javax.persistence.Entity;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -10,7 +11,8 @@ import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Version;
+import javax.persistence.Temporal;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -20,25 +22,36 @@ public class Tarea implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_tarea", updatable = false, nullable = false)
-    private Long idTarea;
-    @Version
+    @Column(name = "id", updatable = false, nullable = false)
+    private Long id;
+    
     @Column(name = "nombre")
     private String nombre;
+    
     @Column(name = "descripcion")
     private String descripcion;
- 
-    @JoinColumn(name = "id", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Categoria idCategoria;
+    
+    @Column(name = "fecha_limite", nullable = false)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    protected Date fechaLimite;
 
-    public Long getIdTarea() {
-        return idTarea;
+    @Column(name = "finalizada", nullable = false, precision = 1, scale = 0)
+    protected boolean finalizada;
+
+    @XmlElement()
+    @JoinColumn(name = "idCategoria", referencedColumnName = "id", nullable = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    protected Categoria categoria;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setIdTarea(Long idTarea) {
-        this.idTarea = idTarea;
+    public void setId(Long id) {
+        this.id = id;
     }
+
+    
 
     public String getNombre() {
         return nombre;
@@ -56,17 +69,36 @@ public class Tarea implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Categoria getIdCategoria() {
-        return idCategoria;
+    public boolean isFinalizada() {
+        return finalizada;
     }
 
-    public void setIdCategoria(Categoria idCategoria) {
-        this.idCategoria = idCategoria;
+    public void setFinalizada(boolean finalizada) {
+        this.finalizada = finalizada;
     }
+
+    public Date getFechaLimite() {
+        return fechaLimite;
+    }
+
+    public void setFechaLimite(Date fechaLimite) {
+        this.fechaLimite = fechaLimite;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    
+    
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 71 * hash + Objects.hashCode(this.idTarea);
+        hash = 71 * hash + Objects.hashCode(this.id);
         hash = 71 * hash + Objects.hashCode(this.nombre);
         hash = 71 * hash + Objects.hashCode(this.descripcion);
         return hash;
@@ -89,7 +121,7 @@ public class Tarea implements Serializable {
 
     @Override
     public String toString() {
-        return "Tarea{" + "idTarea=" + idTarea + ", nombre=" + nombre + ", descripcion=" + descripcion + '}';
+        return "Tarea{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + '}';
     }
-    
+
 }

@@ -38,12 +38,12 @@ public class CategoriasEndPoint {
         categoriasService.create(entity);
 
         return Response.created(UriBuilder.fromResource(CategoriasEndPoint.class)
-                        .path(String.valueOf(entity.getIdCategoria())).build()).build();
+                        .path(String.valueOf(entity.getId())).build()).build();
     }
 
     @DELETE
     @Path("/{id:[0-9][0-9]*}")
-    public Response deleteById(@PathParam("idCategoria") Long id) {
+    public Response deleteById(@PathParam("id") Long id) {
         Categoria entity = categoriasService.findById(id);
         if (entity == null) {
             return Response.status(Status.NOT_FOUND).build();
@@ -54,7 +54,7 @@ public class CategoriasEndPoint {
 
     @GET
     @Path("/{id:[0-9][0-9]*}")
-    public Response findById(@PathParam("idCategoria") Long id) {
+    public Response findById(@PathParam("id") Long id) {
 
         Categoria entity = categoriasService.findById(id);
         if (entity == null) {
@@ -80,7 +80,7 @@ public class CategoriasEndPoint {
         if (id == null) {
             return Response.status(Status.BAD_REQUEST).build();
         }
-        if (!id.equals(entity.getIdCategoria())) {
+        if (!id.equals(entity.getId())) {
             return Response.status(Status.CONFLICT).entity(entity).build();
         }
         if (categoriasService.findById(id) == null) {

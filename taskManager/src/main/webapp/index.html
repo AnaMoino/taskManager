@@ -1,12 +1,10 @@
 <html ng-app="mpApp">
     <head>
-        <title>Demo MP</title>
+        <title>Task Manager</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/estilos/loading-bar.css">
         <script src="js/lib/angular.js"></script>
         <script src="js/lib/angular-route.js"></script>
         <script src="js/lib/angular-ui-router.js"></script>
@@ -18,30 +16,25 @@
 
         <!-- orden logico -->
         <script src="app/ui/module.js"></script>
-        <script src="app/ui/dummy-control.js"></script>
         <script src="app/public/module.js"></script>
 
     </head>
-    <body>
+        <body>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Demo AngularJS</a>
+                    <a class="navbar-brand" href="#">Task Manager</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li><a  ui-sref="public.demo">Demo</a></li>
-                    <li><a  ui-sref="public.demoDirectives">Demo Directives</a></li>
-                    <li><a  ui-sref="public.posts">Posts</a></li>
-                    <li><a  ui-sref="public.promises">Promises</a></li>
-                    <li><a  ui-sref="public.autos">Autos</a></li>
+                    <li><a  ui-sref="public.tareas">Tareas</a></li>
+                    <li><a  ui-sref="public.categorias">Categorias</a></li>
                 </ul>
             </div>
         </nav>
         <div class="jumbotron">
             <div class="container">
-                <h1>Hola mundo</h1>
-                <p>Este es un demo elaborado con AngularJS por el equipo de
-                    Nabenik, sus aliados de negocio.</p>
+                <h1>Administración de tareas</h1>
+                <p>Lleva control de tus tareas para facilitar tu día a día!</p>
             </div>
         </div>
         <div class="container">

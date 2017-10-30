@@ -20,23 +20,21 @@ public class Categoria implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_categoria", updatable = false, nullable = false)
-    private Long idCategoria;
-    @Version
+    @Column(name = "id", updatable = false, nullable = false)
+    private Long id;
+    
     @Column(name = "nombre")
     private String nombre;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTarea", fetch = FetchType.LAZY)
-    private List<Tarea> tareaList;
-
-    public Long getIdCategoria() {
-        return idCategoria;
+    
+    
+    public Long getId() {
+        return id;
     }
 
-    public void setIdCategoria(Long idCategoria) {
-        this.idCategoria = idCategoria;
-    }
-
+    public void setId(Long id) {
+        this.id = id;
+    } 
+    
     public String getNombre() {
         return nombre;
     }
@@ -45,17 +43,10 @@ public class Categoria implements Serializable {
         this.nombre = nombre;
     }
 
-    public List<Tarea> getTareaList() {
-        return tareaList;
-    }
-
-    public void setTareaList(List<Tarea> tareaList) {
-        this.tareaList = tareaList;
-    }
 
     @Override
     public String toString() {
-        return "Categoria{" + "idCategoria=" + idCategoria + ", nombre=" + nombre + '}';
+        return "Categoria{" + "id=" + id + ", nombre=" + nombre + '}';
     }
     
     @Override
@@ -67,8 +58,8 @@ public class Categoria implements Serializable {
             return false;
         }
         Categoria other = (Categoria) obj;
-        if (idCategoria != null) {
-            if (!idCategoria.equals(other.idCategoria)) {
+        if (id != null) {
+            if (!id.equals(other.id)) {
                 return false;
             }
         }
@@ -79,7 +70,7 @@ public class Categoria implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((idCategoria == null) ? 0 : idCategoria.hashCode());
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
         return result;
     }
 

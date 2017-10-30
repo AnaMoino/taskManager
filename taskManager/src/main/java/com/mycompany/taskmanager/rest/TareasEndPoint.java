@@ -38,12 +38,12 @@ public class TareasEndPoint {
         tareasService.create(entity);
 
         return Response.created(UriBuilder.fromResource(TareasEndPoint.class)
-                        .path(String.valueOf(entity.getIdTarea())).build()).build();
+                        .path(String.valueOf(entity.getId())).build()).build();
     }
 
     @DELETE
     @Path("/{id:[0-9][0-9]*}")
-    public Response deleteById(@PathParam("idTarea") Long id) {
+    public Response deleteById(@PathParam("id") Long id) {
         Tarea entity = tareasService.findById(id);
         if (entity == null) {
             return Response.status(Status.NOT_FOUND).build();
@@ -54,7 +54,7 @@ public class TareasEndPoint {
 
     @GET
     @Path("/{id:[0-9][0-9]*}")
-    public Response findById(@PathParam("idTarea") Long id) {
+    public Response findById(@PathParam("id") Long id) {
 
         Tarea entity = tareasService.findById(id);
         if (entity == null) {
@@ -80,7 +80,7 @@ public class TareasEndPoint {
         if (id == null) {
             return Response.status(Status.BAD_REQUEST).build();
         }
-        if (!id.equals(entity.getIdTarea())) {
+        if (!id.equals(entity.getId())) {
             return Response.status(Status.CONFLICT).entity(entity).build();
         }
         if (tareasService.findById(id) == null) {

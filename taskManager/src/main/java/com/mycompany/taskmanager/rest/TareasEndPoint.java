@@ -38,7 +38,7 @@ public class TareasEndPoint {
         tareasService.create(entity);
 
         return Response.created(UriBuilder.fromResource(TareasEndPoint.class)
-                        .path(String.valueOf(entity.getId())).build()).build();
+                .path(String.valueOf(entity.getId())).build()).build();
     }
 
     @DELETE
@@ -66,7 +66,7 @@ public class TareasEndPoint {
     @GET
     public List<Tarea> listAll(@QueryParam("start") Integer startPosition,
             @QueryParam("max") Integer maxResult) {
-        
+
         final List<Tarea> results = tareasService.listAll(startPosition, maxResult);
         return results;
     }

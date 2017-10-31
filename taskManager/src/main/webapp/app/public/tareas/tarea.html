@@ -1,20 +1,16 @@
 <div id="demo" ng-controller="searchTareaController as tarea">
     <!-- Button (Double) -->
     <div class="form-group">
-        <label class="col-md-4 control-label" for="ok"></label>
-        <div class="col-md-8">
+        <div class="row">
             <div class="col-xs-8">
-                <input ng-model="tarea.buscarTarea" placeholder="(ingrese el nombre de la tarea)" class="form-control input-md" required="" type="text" />
+                <input ng-model="tarea.texto" placeholder="(ingrese el nombre de la tarea)" class="form-control input-md" required="" type="text" />
             </div>
             <div class="col-xs-4">
-                <a class="btn btn-success" ng-click="tarea.buscarTarea(tarea.texto)">Buscar</a>
-               
-                <button id="ok" name="ok" class="btn btn-success" ng-click="tarea.search()">Buscar</button>
-                <a id="new" ui-sref="public.tareas.new" class="btn btn-primary">
-                    Nueva Tarea
-                </a>
+                <a class="btn btn-success" ng-click="tarea.buscarTarea(tarea.texto)">Buscar</a>               
+                <button type="button" class="btn btn-primary" ng-click="tarea.open()">Nueva</button>                
             </div>
         </div>
+            
         <hr />
         <div>
             <table class="table">
@@ -27,7 +23,7 @@
                     <th>Categoria</th>
                 </tr>
                 <tr ng-repeat="p in tarea.tareas">
-                    <td> <a ui-sref="public.tareas.edit({ id: p.id })">{{p.id}}</a></td>
+                    <td> <a ng-click="tarea.open(p)">{{p.id}}</a></td>
                     <td>{{p.nombre}}</td>
                     <td>{{p.descripcion}}</td>
                     <td>{{p.fechaLimite| date:'dd-MM-yyyy HH:mm' }}</td>

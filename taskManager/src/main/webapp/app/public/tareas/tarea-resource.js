@@ -11,7 +11,7 @@ module.factory('tareaResource', function ($resource, comm) {
         },
         'query' : {
                 method : 'GET',
-                isArray : false
+                isArray : true
         },
         'update' : {
             method : 'PUT'

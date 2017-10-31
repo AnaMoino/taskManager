@@ -1,8 +1,8 @@
 var module = angular.module('mpApp.public');
 
 
-module.factory('tareaResource', function ($resource, comm) {
-    return $resource(comm.url + '/tareas/:id', {
+module.factory('categoriaResource', function ($resource, comm) {
+    return $resource(comm.url + '/categorias/:id', {
             id : '@id'
         }, {
         'queryAll': {
@@ -11,7 +11,7 @@ module.factory('tareaResource', function ($resource, comm) {
         },
         'query' : {
                 method : 'GET',
-                isArray : true
+                isArray : false
         },
         'update' : {
             method : 'PUT'

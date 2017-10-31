@@ -1,3 +1,4 @@
+{{tr.tarea}}
 <div id="demo" >    
     <form name="nabform" class="form-horizontal">
         <fieldset>
@@ -15,7 +16,7 @@
             <div class="form-group" ng-class="{ 'has-error': nabform.title.$invalid }">
                 <label class="col-md-4 control-label" for="title">Nombre</label>  
                 <div class="col-md-4">
-                    <input id="title" name="title" ng-model="tr.tarea.nombre" placeholder="¿Qué vas hacer?" class="form-control input-md" required="" type="text" />
+                    <input id="title" name="title" ng-model="tr.tarea.nombre" placeholder="¿Qué vas hacer?" class="form-control input-md"  type="text" />
                 </div>
             </div>
 
@@ -23,15 +24,15 @@
             <div class="form-group" ng-class="{ 'has-error': nabform.body.$invalid }">
                 <label class="col-md-4 control-label" for="body">Descripción</label>
                 <div class="col-md-4">                     
-                    <textarea class="form-control" id="body" name="body" placeholder="(descripcion)" ng-model="tr.tarea.descripcion" required="">Describe tu tarea</textarea>
+                    <textarea class="form-control" id="body" name="body" placeholder="(descripcion)" ng-model="tr.tarea.descripcion">Describe tu tarea</textarea>
                 </div>
             </div>
 
             <!-- Textarea -->
             <div class="form-group" ng-class="{ 'has-error': nabform.body.$invalid }">
                 <label class="col-md-4 control-label" for="fecha">Fecha/Hora límite</label>
-                <div class="col-md-4">                     
-                    <input id="fecha" name="fecha" ng-model="tr.tarea.fechaLimite" placeholder="¿Cuando?" class="form-control input-md" required="" type="datetime-local" />
+                <div class="col-md-4"> 
+                    <input id="fecha" name="fecha" ng-model="tr.tarea.fechaLimite" placeholder="¿Cuando?" class="form-control input-md"  type="datetime-local" />
                 </div>
             </div>
 
@@ -39,8 +40,15 @@
             <div class="form-group" ng-class="{ 'has-error': nabform.body.$invalid }">
                 <label class="col-md-4 control-label" for="categoria">Categoria</label>
                 <div class="col-md-4">
-                    <select ng-model="tr.tarea.categoria.id" ng-options="item.id as item.nombre for item in tr.categorias" id="categoria" name="categoria" required=""></select>
+                    <select ng-model="tr.tarea.categoria.id" ng-options="item.id as item.nombre for item in tr.categorias" id="categoria" name="categoria" ></select>
                 </div>
+            </div>
+            
+             <div class="form-group">
+               <label class="col-md-4 control-label" for="categoria">Estado:</label>
+               <div class="col-md-4">
+                     <label><input type="checkbox" ng-model="tr.tarea.finalizada" ng-value="tr.tarea.finalizada">  (marque de finalizada)</label>            
+               </div>
             </div>
 
             <!-- Button (Double) -->
